@@ -65,11 +65,7 @@ public class RentalManager {
 	}
 
 	public void printRental(Customer customer) {
-		List<Rental> customerRentals = rentals.get(customer);
-		if(customerRentals == null)
-		{
-			customerRentals = new ArrayList<Rental>();
-		}
+		List<Rental> customerRentals = getCustomerRentals(customer);
 		System.out.println("Name: " + customer.getName() +
 				"\tRentals: " + customerRentals.size()) ;
 		for ( Rental rental: customerRentals ) {
@@ -77,20 +73,14 @@ public class RentalManager {
 			System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
 		}
 	}
-	
-	public void printCustomerRentalList(Customer customer) {
+
+	private List<Rental> getCustomerRentals(Customer customer) {
 		List<Rental> customerRentals = rentals.get(customer);
 		if(customerRentals == null)
 		{
 			customerRentals = new ArrayList<Rental>();
 		}
-		
-		System.out.println("Name: " + customer.getName() +
-				"\tRentals: " + customerRentals.size()) ;
-		for ( Rental rental: customerRentals ) {
-			System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ") ;
-			System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()+"\n") ;
-		}
+		return customerRentals;
 	}
 	
 	public String getCustomerReport(Customer customer)
@@ -99,11 +89,7 @@ public class RentalManager {
 
 		writeReportTitleTo(result, customer.getName());
 
-		List<Rental> customerRentals = rentals.get(customer);
-		if(customerRentals == null)
-		{
-			customerRentals = new ArrayList<Rental>();
-		}
+		List<Rental> customerRentals = getCustomerRentals(customer);
 
 		double totalCharge = 0;
 		int totalPoint = 0;

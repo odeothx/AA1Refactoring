@@ -35,7 +35,7 @@ public class CustomerManager {
 		
 		for ( Customer customer: customers ) 
 		{
-			RentalManager.getInstance().printCustomerRentalList(customer);
+			RentalManager.getInstance().printRental(customer);
 		}
 		System.out.println("End of list");
 	}

@@ -101,8 +101,8 @@ public class VRUI {
 		videoManager.registerVideo("v1", Video.CD, Video.REGULAR, new Date()) ;
 		videoManager.registerVideo("v2", Video.DVD, Video.NEW_RELEASE, new Date()) ;
 		
-		rentalManager.rentVideo(customerManager.findCustomer("james"), videoManager.findVideo("v1")) ;
-		rentalManager.rentVideo(customerManager.findCustomer("james"), videoManager.findVideo("v2")) ;
+		rentalManager.rentVideo(customerManager.findCustomer("James"), videoManager.findVideo("v1")) ;
+		rentalManager.rentVideo(customerManager.findCustomer("James"), videoManager.findVideo("v2")) ;
 	}
 
 	public void getCustomerReport() {
@@ -127,6 +127,10 @@ public class VRUI {
 		videoManager.registerVideo(title, videoType, priceCode, registeredDate);
 	}
 
+	private void registerCustomer() { 
+		customerManager.registerCustomer(getCustomerName());
+	}
+
 	private int getPriceCode() {
 		System.out.println("Enter price code( 1 for Regular, 2 for New Release ):") ;
 		int priceCode = scanner.nextInt();
@@ -145,8 +149,6 @@ public class VRUI {
 		return title;
 	}
 
-	private void registerCustomer() { customerManager.registerCustomer(getCustomerName()); }
-
 	public int showCommand() {
 		System.out.println("\nSelect a command !");
 		System.out.println("\t 0. Quit");
@@ -162,6 +164,5 @@ public class VRUI {
 		int command = scanner.nextInt() ;
 		
 		return command ;
-		
 	}
 }
